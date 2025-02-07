@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router'
-import MainNav from '../components/MainNav'
+import MainNav from '../components/Mainnav'
 
 function layout() {
   return (

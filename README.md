@@ -97,3 +97,27 @@ function AppRoutes() {
 
 export default AppRoutes
 ```
+
+
+
+
+
+## Step 4 React-Hook-Form
+```bash
+npm install react-hook-form
+```
+
+
+adding icon for project
+https://lucide.dev/icons/
+```bash
+npm i lucide-react
+```
+
+## Step 5 Validate with Zod
+https://www.npmjs.com/package/@hookform/resolvers
+
+```bash
+npm i @hookform/resolvers
+npm i zod
+```

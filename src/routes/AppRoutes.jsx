@@ -9,6 +9,8 @@ import Dashboard from '../Pages/admin/Dashboard'
 import Manage from '../Pages/admin/Manage'
 import HomeUser from '../Pages/user/HomeUser'
 import Notfound from '../Pages/Notfound'
+import Register1 from '../Pages/auth/Register1'
+
 
 function AppRoutes() {
   return (
@@ -19,7 +21,7 @@ function AppRoutes() {
             {/* component ลูกจะเรนเดอร์ผ่าน outlet */}
                 <Route index element={<Home />} />
                 <Route path="about" element={<About />} />
-                <Route path="register" element={<Register />} />
+                <Route path="register" element={<Register1 />} />
                 <Route path="login" element={<Login />} />
             </Route>
 
