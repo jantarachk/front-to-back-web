@@ -23,6 +23,9 @@ const authStore = (set) => ({
             // console.log(error.response.data.message)
             return { success: false, error: error.response.data.message}
         }
+     },
+     actionLogout : () => {
+        set({ user: [], token: null })
      }
 })
 
