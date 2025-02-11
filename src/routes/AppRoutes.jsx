@@ -10,6 +10,7 @@ import Manage from '../Pages/admin/Manage'
 import HomeUser from '../Pages/user/HomeUser'
 import Notfound from '../Pages/Notfound'
 import Register1 from '../Pages/auth/Register1'
+import ProtectRoute from './ProtectRoute'
 
 
 function AppRoutes() {
@@ -26,12 +27,12 @@ function AppRoutes() {
             </Route>
 
             {/* Private [USER] */}
-            <Route path="user" element={<Layout />}>
+            <Route path="user" element={<ProtectRoute el={<Layout/>} allows={["USER"]}/>}>
                 <Route index element={<HomeUser />} />
             </Route>
 
             {/* Private [ADMIN] */}
-            <Route path="admin">
+            <Route path="admin" element={<ProtectRoute el={<Layout/>} allows={["ADMIN"]}/>} >
                 <Route index element={<Dashboard />} />
                 <Route path="manage" element={<Manage />} />
             </Route>

@@ -9,9 +9,10 @@ import Buttons from '../../components/forms/Buttons'
 //Validatos
 import { registerSchema } from '../../Utils/validator'
 import { zodResolver } from "@hookform/resolvers/zod"
+import { actionRegister } from '../../api/auth'
 
 function Register1() {
-    const { register,handleSubmit,formState } = useForm({
+    const { register,handleSubmit,formState,reset } = useForm({
         resolver: zodResolver(registerSchema)
     })
         const { isSubmitting,errors } = formState
@@ -21,16 +22,18 @@ function Register1() {
   
   const hdlSubmit = async (value) => {
 
-    //Set time out ไว้ดู loading status เฉยๆ เพราะตอนนี้ทำบนเครื่องเองจะเร็วมาก ดู now loading ไม่่ทัน
-    await new Promise((resolve)=> setTimeout(resolve,3000))
+    // //Set time out ไว้ดู loading status เฉยๆ เพราะตอนนี้ทำบนเครื่องเองจะเร็วมาก ดู now loading ไม่่ทัน
+    // await new Promise((resolve)=> setTimeout(resolve,3000))
 
     try {
-      const res = await axios.post('http://localhost:8000/api/register',value)
+      const res = await actionRegister(value)
+
       console.log(res)
+      reset()
       createAlert("success","Register Success")
     } catch (error) {
-      createAlert("info", error.response.data.message)
-      console.log(error)
+      createAlert("info", error.response?.data?.message)
+      console.log(error.response?.data?.message)
     }
     console.log(value)
 
@@ -43,11 +46,11 @@ function Register1() {
         <h1 className='text-xl font-bold text-center'> Register </h1>
         <form onSubmit={handleSubmit(hdlSubmit)}>
           <div className='flex flex-col gap-2 py-4'>
-            <FormInput register={register} name="email"/>
-            <FormInput register={register} name="firstName"/>
-            <FormInput register={register} name="lastName"/>
-            <FormInput register={register} name="password"/>
-            <FormInput register={register} name="confirmPassword"/>
+            <FormInput register={register} name="email" errors={errors}/>
+            <FormInput register={register} name="firstName" errors={errors}/>
+            <FormInput register={register} name="lastName" errors={errors}/>
+            <FormInput register={register} name="password" errors={errors} type="password"/>
+            <FormInput register={register} name="confirmPassword" errors={errors} type="password"/>
             
           </div>
           <div className='flex justify-center'>

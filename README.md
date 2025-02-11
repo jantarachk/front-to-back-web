@@ -121,3 +121,10 @@ https://www.npmjs.com/package/@hookform/resolvers
 npm i @hookform/resolvers
 npm i zod
 ```
+
+
+
+## Step 7 Install zustand to manage globalstate
+```bash
+npm install zustand
+````
